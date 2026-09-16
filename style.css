@@ -148,6 +148,11 @@ select:focus-visible,
 
 .temp.max { color: #e74c3c; }
 .temp.min { color: #3498db; }
+.temp.current { color: #f39c12; }
+
+.current-card {
+  border: 2px solid #f4d35e;
+}
 
 .advice-box {
   background-color: #f8f9fa;

@@ -78,7 +78,7 @@ async function fetchWeather(forceRefresh = false) {
   toggleElement(errorEl, false);
   toggleElement(weatherCardsEl, false);
 
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=2`;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=2`;
 
   try {
     const response = await fetch(url);
@@ -106,11 +106,23 @@ async function fetchWeather(forceRefresh = false) {
 
 // 画面反映処理の分離
 function renderUI(data) {
+  updateCurrentWeatherUI(data.current);
   updateDayUI('today', data.daily, 0);
   updateDayUI('tomorrow', data.daily, 1);
 
   toggleElement(loadingEl, false);
   toggleElement(weatherCardsEl, true);
+}
+
+function updateCurrentWeatherUI(current) {
+  if (!current) return;
+
+  const weather = getWeatherCategory(current.weather_code);
+  const temp = Math.round(current.temperature_2m);
+
+  document.getElementById('current-icon').textContent = weather.icon;
+  document.getElementById('current-text').textContent = weather.text;
+  document.getElementById('current-temp').textContent = `${temp}℃`;
 }
 
 // UI更新処理
