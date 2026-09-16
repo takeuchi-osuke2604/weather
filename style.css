@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: #f4f7f6;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+}
+
+select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* 読み込み中・エラーメッセージスタイル */
+.state-message {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#retry-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#retry-btn:hover {
+  background-color: #2980b9;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 天気カードスタイル */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 12px;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.weather-text-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-icon {
+  font-size: 2.2rem;
+}
+
+.weather-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* 1. アクセシビリティ用：見た目上は隠すがスクリーンリーダーに読み上げさせるクラス */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* 2. セレクトボックスのフォーカス時ハイライト（キーボード操作用） */
+select:focus-visible,
+#retry-btn:focus-visible {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* 3. モバイル表示時の文字溢れ防止 */
+.temp-box {
+  white-space: nowrap;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.temp.max { color: #e74c3c; }
+.temp.min { color: #3498db; }
+
+.advice-box {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.advice {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.advice:last-child {
+  margin-bottom: 0;
+}
+
+footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: #7f8c8d;
+  text-decoration: underline;
+}

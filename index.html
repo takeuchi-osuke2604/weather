@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お出かけ天気チェッカー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌤️ お出かけ天気</h1>
+      <label for="location-select" class="sr-only">地域を選択</label>
+      <select id="location-select">
+        <option value="35.68,139.77">東京</option>
+        <option value="36.57,139.94">宇都宮</option>
+        <option value="43.06,141.35">札幌</option>
+        <option value="38.26,140.87">仙台</option>
+        <option value="35.46,139.62">横浜</option>
+        <option value="34.69,135.50">大阪</option>
+        <option value="33.59,130.42">福岡</option>
+      </select>
+    </header>
+
+    <!-- 読み込み中表示 -->
+    <div id="loading" class="state-message">
+      <div class="spinner"></div>
+      <p>天気データを読み込み中...</p>
+    </div>
+
+    <!-- エラー表示 -->
+    <div id="error" class="state-message hidden" hidden>
+      <p id="error-message">データの取得に失敗しました。</p>
+      <button id="retry-btn">もう一度試す</button>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <main id="weather-cards" class="hidden" hidden>
+      <!-- 今日 -->
+      <section class="card">
+        <h2>今日</h2>
+        <div class="weather-info">
+          <div class="weather-text-group">
+            <span class="weather-icon" id="today-icon">--</span>
+            <span class="weather-label" id="today-text">--</span>
+          </div>
+          <div class="temp-box">
+            <span class="temp max" id="today-max">--℃</span> / 
+            <span class="temp min" id="today-min">--℃</span>
+          </div>
+        </div>
+        <div class="advice-box">
+          <p id="today-umbrella-advice" class="advice">☔ 傘チェック中...</p>
+        </div>
+      </section>
+
+      <!-- 明日 -->
+      <section class="card">
+        <h2>明日</h2>
+        <div class="weather-info">
+          <div class="weather-text-group">
+            <span class="weather-icon" id="tomorrow-icon">--</span>
+            <span class="weather-label" id="tomorrow-text">--</span>
+          </div>
+          <div class="temp-box">
+            <span class="temp max" id="tomorrow-max">--℃</span> / 
+            <span class="temp min" id="tomorrow-min">--℃</span>
+          </div>
+        </div>
+        <div class="advice-box">
+          <p id="tomorrow-umbrella-advice" class="advice">☔ 傘チェック中...</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- 出典表記 -->
+    <footer>
+      <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Weather data by Open-Meteo.com</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
