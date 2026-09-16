@@ -1,29 +1,20 @@
 // WMO 天気コードに対応する日本語と絵文字の定義関数
 function getWeatherCategory(code) {
-  switch (code) {
-    case 0:
-    case 1:
-      return { text: '晴れ', icon: '☀️' };
-    case 2:
-    case 3:
-      return { text: 'くもり', icon: '☁️' };
-    case 45:
-    case 48:
-      return { text: '霧', icon: '🌫️' };
-    case 51: case 53: case 55: case 56: case 57:
-    case 61: case 63: case 65: case 66: case 67:
-    case 80: case 81: case 82:
-      return { text: '雨', icon: '☔' };
-    case 71: case 73: case 75: case 77:
-    case 85: case 86:
-      return { text: '雪', icon: '❄️' };
-    case 95:
-    case 96:
-    case 99:
-      return { text: '雷雨', icon: '🌩️' };
-    default:
-      return { text: '不明', icon: '❓' };
-  }
+  const sunnyCodes = [0, 1];
+  const cloudyCodes = [2, 3];
+  const foggyCodes = [45, 48];
+  const rainyCodes = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82];
+  const snowyCodes = [71, 73, 75, 77, 85, 86];
+  const thunderCodes = [95, 96, 99];
+
+  if (sunnyCodes.includes(code)) return { text: '晴れ', icon: '☀️' };
+  if (cloudyCodes.includes(code)) return { text: 'くもり', icon: '☁️' };
+  if (foggyCodes.includes(code)) return { text: '霧', icon: '🌫️' };
+  if (rainyCodes.includes(code)) return { text: '雨', icon: '☔' };
+  if (snowyCodes.includes(code)) return { text: '雪', icon: '❄️' };
+  if (thunderCodes.includes(code)) return { text: '雷雨', icon: '🌩️' };
+
+  return { text: '不明', icon: '❓' };
 }
 
 const locationSelect = document.getElementById('location-select');
